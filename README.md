@@ -15,9 +15,5 @@ This repository contains the RTL design and verification of a 16-tap Finite Impu
 
 *(Note: Data verified via ModelSim and MATLAB spectral analysis with 0.0000 dB deviation).*
 
-##  Repository Structure
-* `/src` - Verilog RTL source code for both architectures.
-* `/sim` - Testbenches and simulation files.
-* `/docs` - Project report and architecture diagrams.
-* `/matlab` - Scripts for coefficient generation (Floating to Q15) and FFT analysis.
+
 
