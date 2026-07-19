@@ -1,0 +1,18 @@
+# Hardware & Synthesis Tools Ignore
+*.jou
+*.log
+*.str
+*.pb
+*.wdb
+*.dir/
+*.sim/
+*.runs/
+*.hw/
+*.ip_user_files/
+*.cache/
+.Xil/
+
+# Python & MATLAB Ignore
+__pycache__/
+*.pyc
+*.asv
