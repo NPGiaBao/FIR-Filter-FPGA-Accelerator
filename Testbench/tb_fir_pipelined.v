@@ -1,15 +1,11 @@
-// =====================================================================
-// tb_fir_pipelined.v - Testbench chay tren ModelSim
-// Dung CHUNG file test_input.hex voi tb_fir_folded de so sanh cong bang.
-// Dua mau vao LIEN TUC moi chu ky (dung tinh chat pipeline).
-// =====================================================================
+
 `timescale 1ns/1ps
 
 module tb_fir_pipelined;
 
     localparam N  = 16;
     localparam DW = 16;
-    localparam NUM_SAMPLES = 1000;   // phai khop so mau trong test_input.hex
+    localparam NUM_SAMPLES = 1000;   
 
     reg                       clk;
     reg                       rst_n;
@@ -27,16 +23,13 @@ module tb_fir_pipelined;
         .y_out     (y_out)
     );
 
-    always #5 clk = ~clk;   // clock 100MHz
+    always #5 clk = ~clk;   
 
     reg [DW-1:0] mem_in [0:NUM_SAMPLES-1];
     integer fout;
     integer k;
 
-    // ---- DA XOA/COMMENT DOAN CHECK LATENCY SAI LOGIC TAI DAY ----
-    // Do pipeline nhan du lieu lien tuc, viec luu tru last_valid_in_cycle
-    // tren moi nhip clock se gay ra phep tru bang 0, dan den bao loi ao.
-    // -------------------------------------------------------------
+   
 
     initial begin
         clk = 0; rst_n = 0; valid_in = 0; x_in = 0;
@@ -56,7 +49,7 @@ module tb_fir_pipelined;
         @(negedge clk);
         valid_in = 0;
 
-        // cho pipeline xa het du lieu con lai (vai chu ky latency)
+        
         repeat (20) @(negedge clk);
 
         $fclose(fout);
@@ -64,7 +57,7 @@ module tb_fir_pipelined;
         $finish;
     end
 
-    // ---- Ghi ket qua ra file moi khi valid_out = 1 ----
+    
     always @(posedge clk) begin
         if (valid_out)
             $fwrite(fout, "%0d\n", y_out);
