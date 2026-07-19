@@ -40,7 +40,7 @@ module tb_fir_pipelined;
         repeat (2) @(posedge clk);
         rst_n = 1;
 
-        // dua tat ca mau vao LIEN TUC, moi chu ky 1 mau (dac trung pipeline)
+        
         for (k = 0; k < NUM_SAMPLES; k = k + 1) begin
             @(negedge clk);
             x_in     = mem_in[k];
